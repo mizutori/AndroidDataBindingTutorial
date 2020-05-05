@@ -51,7 +51,7 @@
             android:text="INVITE"
             android:onClick="@{() -> handler.onClickInvite(user)}"
             app:font="@{`Roboto-Bold.ttf`}"
-            android:visibility="@{user.isFriend ? View.GONE : View.VISIBLE}"
+            app:visibilityWithAnimation="@{user.isFriend ? View.GONE : View.VISIBLE}"
             />
 
         <Button

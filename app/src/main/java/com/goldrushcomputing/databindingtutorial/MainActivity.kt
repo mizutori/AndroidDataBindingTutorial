@@ -1,11 +1,15 @@
 package com.goldrushcomputing.databindingtutorial
 
 import android.os.Bundle
+import android.transition.TransitionManager
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableBoolean
+import androidx.databinding.OnRebindCallback
+import androidx.databinding.ViewDataBinding
 import com.goldrushcomputing.databindingtutorial.databinding.ActivityMainBinding
 import com.goldrushcomputing.databindingtutorial.model.User
 
@@ -23,6 +27,16 @@ class MainActivity : AppCompatActivity() {
         val user = User(firstName, lastName, profileImageUrl, ObservableBoolean(false))
         binding.user = user
         binding.handler = this
+
+        binding.addOnRebindCallback(object : OnRebindCallback<ViewDataBinding>() {
+            override fun onPreBind(binding: ViewDataBinding): Boolean {
+                TransitionManager.beginDelayedTransition(
+                    binding.root as ViewGroup
+                )
+                return super.onPreBind(binding)
+            }
+        })
+
     }
 
     //メソッド参照
