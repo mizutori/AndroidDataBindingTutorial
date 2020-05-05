@@ -25,35 +25,47 @@
             app:imageUrl="@{user.profileImageUrl}"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
+
+        <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.name}" />
+            android:text="@{user.name}"
+            android:textSize="20sp"
+            app:font="@{`AppleGaramond-BoldItalic.ttf`}"
+            />
 
         <Button
-            android:id="@+id/sendButton"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="SEND"
             android:onClick="@{handler::onClickSend}"
-            android:text="SEND" />
+            app:font="@{`Roboto-Bold.ttf`}"
+            />
 
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:text="INVITE"
             android:onClick="@{() -> handler.onClickInvite(user)}"
-            android:text="INVITE" />
+            app:font="@{`Roboto-Bold.ttf`}"
+            />
 
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:text="LIKE"
             android:onClick="@{(view) -> handler.onClickLike(user)}"
-            android:text="LIKE" />
+            app:font="@{`Roboto-Bold.ttf`}"
+            />
 
         <Button
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:text="SHARE"
             android:onClick="@{(view) -> handler.onClickShare(view, user)}"
-            android:text="SHARE" />
+            app:font="@{`Roboto-Bold.ttf`}"
+            />
     </LinearLayout>
+
 </layout>
 
