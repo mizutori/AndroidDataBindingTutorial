@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         val profileImageUrl =
             "https://upload.wikimedia.org/wikipedia/commons/2/25/Benjamin_Franklin_by_Joseph_Duplessis_1778.jpg"
         val user = User(firstName, lastName, profileImageUrl, ObservableBoolean(false))
-        //val user = User("Benjamin", "https://upload.wikimedia.org/wikipedia/commons/2/25/Benjamin_Franklin_by_Joseph_Duplessis_1778.jpg")
         binding.user = user
         binding.handler = this
     }

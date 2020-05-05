@@ -6,7 +6,5 @@ data class User(
     var firstName: String,
     var lastName: String,
     var profileImageUrl: String,
-    val isFriend: ObservableBoolean
-){
-
-}
+    var isFriend: ObservableBoolean
+)
