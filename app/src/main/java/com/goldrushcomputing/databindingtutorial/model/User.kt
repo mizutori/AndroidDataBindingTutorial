@@ -1,6 +1,12 @@
 package com.goldrushcomputing.databindingtutorial.model
 
+import androidx.databinding.ObservableBoolean
+
 data class User(
-    var name: String,
-    var profileImageUrl: String
-)
+    var firstName: String,
+    var lastName: String,
+    var profileImageUrl: String,
+    val isFriend: ObservableBoolean
+){
+
+}

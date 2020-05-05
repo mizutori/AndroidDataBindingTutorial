@@ -2,10 +2,10 @@ package com.goldrushcomputing.databindingtutorial
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableBoolean
 import com.goldrushcomputing.databindingtutorial.databinding.ActivityMainBinding
 import com.goldrushcomputing.databindingtutorial.model.User
 
@@ -16,7 +16,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val user = User("Benjamin", "https://upload.wikimedia.org/wikipedia/commons/2/25/Benjamin_Franklin_by_Joseph_Duplessis_1778.jpg")
+        val firstName = "Benjamin"
+        val lastName = "Franklin"
+        val profileImageUrl =
+            "https://upload.wikimedia.org/wikipedia/commons/2/25/Benjamin_Franklin_by_Joseph_Duplessis_1778.jpg"
+        val user = User(firstName, lastName, profileImageUrl, ObservableBoolean(false))
+        //val user = User("Benjamin", "https://upload.wikimedia.org/wikipedia/commons/2/25/Benjamin_Franklin_by_Joseph_Duplessis_1778.jpg")
         binding.user = user
         binding.handler = this
     }
@@ -32,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     //リスナーバインディング１
     fun onClickInvite(user: User) {
-        val msg = "Inviting ${user.name} ..."
+        val msg = "Inviting ${user.firstName} ..."
         Toast.makeText(
             this, msg,
             Toast.LENGTH_SHORT
@@ -41,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     //リスナーバインディング２
     fun onClickLike(user: User) {
-        val msg = "Liking ${user.name}'s post..."
+        val msg = "Liking ${user.firstName}'s post..."
         Toast.makeText(
             this, msg,
             Toast.LENGTH_SHORT
@@ -50,11 +55,15 @@ class MainActivity : AppCompatActivity() {
 
     //リスナーバインディング３
     fun onClickShare(view: View, user: User) {
-        val msg = "Sharing to ${user.name} ..."
+        val msg = "Sharing to ${user.firstName} ..."
         Toast.makeText(
             this, msg,
             Toast.LENGTH_SHORT
         ).show()
     }
 
+    fun onCheckFriend(user: User) {
+        //isFriendの値をトグルする
+        user.isFriend.set(!user.isFriend.get())
+    }
 }
