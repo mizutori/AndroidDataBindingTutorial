@@ -6,10 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ObservableBoolean
-import androidx.databinding.OnRebindCallback
-import androidx.databinding.ViewDataBinding
+import androidx.databinding.*
 import com.goldrushcomputing.databindingtutorial.databinding.ActivityMainBinding
 import com.goldrushcomputing.databindingtutorial.model.User
 
@@ -24,9 +21,14 @@ class MainActivity : AppCompatActivity() {
         val lastName = "Franklin"
         val profileImageUrl =
             "https://upload.wikimedia.org/wikipedia/commons/2/25/Benjamin_Franklin_by_Joseph_Duplessis_1778.jpg"
-        val user = User(firstName, lastName, profileImageUrl, ObservableBoolean(false))
+        val user = User(firstName,
+            lastName, profileImageUrl,
+            ObservableBoolean(false),
+            ObservableField<String>("Ben"))
+
         binding.user = user
         binding.handler = this
+
 
         binding.addOnRebindCallback(object : OnRebindCallback<ViewDataBinding>() {
             override fun onPreBind(binding: ViewDataBinding): Boolean {
